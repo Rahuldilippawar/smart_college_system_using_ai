@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AMRIT HELPER</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <head>
+        <script src="https://kit.fontawesome.com/YOUR_KIT_CODE.js" crossorigin="anonymous"></script>
+    </head>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="/static/images/atma.jpg" type="image/x-icon">
+   
+    <link rel="stylesheet" href="/static/chatbot/chatboat.css">
+</head>
+<body>
+<nav class="department-nav">
+    <div class="container">
+      <a href="/" class="back-btn">
+        <i class="fas fa-arrow-left"></i> Back to Home
+      </a>
+    </div>
+  </nav>
+    <div id="chat-container">
+        <!-- Header Section -->
+        <div id="chat-header">
+            <h1>ATMA CHAT-BOAT</h1>
+            <p>Get instant assistance for everything college-related!</p>
+        </div>
+    
+<!-- Chat Box -->
+<div id="chat-box">
+    <div id="messages"></div>
+</div>
+
+<!-- Typing Indicator -->
+<div id="typing-indicator" style="display: none;">Bot is typing...</div>
+
+<!-- Chat Input Area -->
+<!-- Chat Input Area -->
+<div id="chat-input">
+    <textarea id="user-msg" placeholder="Ask something..."></textarea>
+    <div id="suggestions"></div> <!-- Suggestions Appear Here -->
+    <button id="send-btn" onclick="sendMessage()">Send</button>
+</div>
+
+
+
+    <!-- Include external JS -->
+    <script src="/static/chatbot/chatboat.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+    
+</body>
+</html>

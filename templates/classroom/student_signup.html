@@ -1,0 +1,32 @@
+{% extends 'classroom/base.html' %}
+
+{% block content %}
+
+<div class="login-page">
+    <img src="{{ url_for('static', filename='images/login-background.PNG') }}" alt="">
+    <div class="student-signup-form">
+      {% if registered %}
+      <h1>Thank you for registering.</h1>
+      {% else %}
+      <h1>Sign up as a Student.</h1>
+      <h3>Fill out the form:</h3>
+
+      <form method="POST">
+        {{ form.hidden_tag() }}
+
+        <!-- Display non-field errors -->
+        {% for field in form %}
+          <p> <label for="{{ field.id }}">{{ field.label }}</label>{{ field() }}</p>
+          {% for error in field.errors %}
+            <span class="error">{{ error }}</span>
+          {% endfor %}
+        {% endfor %}
+
+        <input type="submit" value="Sign Up">
+      </form>
+      <a href="{{ url_for('login') }}">Already have an account?</a>
+      {% endif %}
+    </div>
+</div>
+
+{% endblock %}

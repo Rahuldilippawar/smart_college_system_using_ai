@@ -1,0 +1,73 @@
+{% extends "classroom/base.html" %}
+{% block content %}
+
+<div class="container mt-5">
+    <div class="card shadow-lg p-4">
+        <h2 class="text-center text-primary">Marks for {{ student.name }}</h2>
+        
+        <form method="POST" class="mt-4">
+            {{ form.hidden_tag() }}
+            
+            <div class="form-group">
+                <label class="font-weight-bold">{{ form.subject_name.label }}</label>
+                {{ form.subject_name(class="form-control", placeholder="Enter subject name") }}
+            </div>
+
+            <div class="form-group">
+                <label class="font-weight-bold">{{ form.marks_obtained.label }}</label>
+                {{ form.marks_obtained(class="form-control", placeholder="Enter marks obtained") }}
+            </div>
+
+            <div class="form-group">
+                <label class="font-weight-bold">{{ form.max_marks.label }}</label>
+                {{ form.max_marks(class="form-control", placeholder="Enter maximum marks") }}
+            </div>
+
+            <button type="submit" class="btn btn-success btn-block mt-3">Add Marks</button>
+        </form>
+    </div>
+
+    {% if student_marks %}
+    <div class="card mt-5 shadow-lg">
+        <div class="card-header bg-primary text-white">
+            <h4 class="mb-0">Existing Marks</h4>
+        </div>
+        <div class="card-body">
+            <table class="table table-hover text-center">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>#</th>
+                        <th>Subject</th>
+                        <th>Marks Obtained</th>
+                        <th>Maximum Marks</th>
+                        <th>Percentage</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for mark in student_marks %}
+                    <tr>
+                        <td>{{ loop.index }}</td>
+                        <td>{{ mark.subject_name }}</td>
+                        <td>{{ mark.marks_obtained }}</td>
+                        <td>{{ mark.max_marks }}</td>
+                        <td>
+                            {% if mark.max_marks > 0 %}
+                                {{ ((mark.marks_obtained / mark.max_marks) * 100) | round(2) }}%
+                            {% else %}
+                                N/A
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    {% else %}
+    <div class="alert alert-info text-center mt-4">
+        <p>No marks added yet.</p>
+    </div>
+    {% endif %}
+</div>
+
+{% endblock %}

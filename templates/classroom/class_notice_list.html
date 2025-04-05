@@ -1,0 +1,80 @@
+{% extends 'classroom/base.html' %}
+{% block content %}
+
+<style>
+  body {
+    background: linear-gradient(to right, #ff9a9e, #fad0c4);
+  }
+  .notice-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+    transition: transform 0.2s ease-in-out;
+  }
+  .notice-card:hover {
+    transform: translateY(-5px);
+  }
+  .notice-img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #ff5f6d;
+  }
+  .notice-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  .notice-content {
+    margin-top: 10px;
+    font-size: 1.2rem;
+    color: #333;
+  }
+  .notice-date {
+    font-size: 0.9rem;
+    color: #888;
+  }
+  .notice-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+</style>
+
+<div class="container mt-5">
+  <h2 class="text-center text-white mb-4">📢 Class Notices</h2>
+
+  {% if notices|length == 0 %}
+  <div class="alert alert-warning text-center">No Notices Yet.</div>
+  {% else %}
+
+  {% for notice in notices %}
+  <div class="notice-card">
+    <div class="notice-header">
+      {% if notice.teacher and notice.teacher.profile_pic %}
+      <img src="{{ url_for('static', filename='images/' + notice.teacher.profile_pic) }}" class="notice-img">
+      {% else %}
+      <img src="{{ url_for('static', filename='images/login-avatar.PNG') }}" class="notice-img">
+      {% endif %}
+
+      <div>
+        <h5 class="text-primary mb-1">👨‍🏫 {{ notice.teacher.name }}</h5>
+        <p class="text-muted notice-date">📅 {{ notice.created_at.strftime('%Y-%m-%d %H:%M') }}</p>
+      </div>
+    </div>
+
+    <div class="notice-content">
+      <h5 class="text-success">📚 Subject: {{ notice.teacher.subject_name }}</h5>
+      <hr>
+      <p class="text-dark">{{ notice.message_html | safe }}</p>
+    </div>
+  </div>
+  {% endfor %}
+
+  {% endif %}
+</div>
+
+{% endblock %}

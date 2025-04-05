@@ -1,0 +1,97 @@
+{% extends 'classroom/base.html' %}
+
+{% block content %}
+
+<!-- Container for the login page -->
+<div class="login-page">
+  <img src="{{ url_for('static', filename='images/login-background.PNG') }}" alt="Background" class="background-image">
+  <div class="student-signup-form">
+    {% if registered %}
+      <h1 class="text-center text-success">Thank you for registering.</h1>
+    {% else %}
+      <h1 class="text-center mb-4">Sign Up as a Teacher</h1>
+
+      <!-- Teacher Signup Form -->
+      <form method="post" class="needs-validation" novalidate>
+        {{ form.hidden_tag() }} <!-- CSRF token -->
+
+        <!-- Name Input -->
+        <div class="form-group">
+          <label for="name">{{ form.name.label }}</label>
+          {{ form.name(class="form-control", id="name", placeholder="Enter your full name") }}
+          {% for error in form.name.errors %}
+            <div class="error text-danger">{{ error }}</div>
+          {% endfor %}
+        </div>
+
+        <!-- Subject Name Input -->
+        <div class="form-group">
+          <label for="subject_name">{{ form.subject_name.label }}</label>
+          {{ form.subject_name(class="form-control", id="subject_name", placeholder="Subject you teach") }}
+          {% for error in form.subject_name.errors %}
+            <div class="error text-danger">{{ error }}</div>
+          {% endfor %}
+        </div>
+
+        <!-- Phone Input -->
+        <div class="form-group">
+          <label for="phone">{{ form.phone.label }}</label>
+          {{ form.phone(class="form-control", id="phone", placeholder="Enter phone number") }}
+          {% for error in form.phone.errors %}
+            <div class="error text-danger">{{ error }}</div>
+          {% endfor %}
+        </div>
+
+        <!-- Email Input -->
+        <div class="form-group">
+          <label for="email">{{ form.email.label }}</label>
+          {{ form.email(class="form-control", id="email", placeholder="Enter email address") }}
+          {% for error in form.email.errors %}
+            <div class="error text-danger">{{ error }}</div>
+          {% endfor %}
+        </div>
+
+        <!-- Username Input -->
+        <div class="form-group">
+          <label for="username">{{ form.username.label }}</label>
+          {{ form.username(class="form-control", id="username", placeholder="Choose a username") }}
+          {% for error in form.username.errors %}
+            <div class="error text-danger">{{ error }}</div>
+          {% endfor %}
+          <p>{{ form.username.help_text }}</p>
+        </div>
+
+        <!-- Password Input -->
+        <div class="form-group">
+          <label for="password1">{{ form.password1.label }}</label>
+          {{ form.password1(class="form-control", id="password1", placeholder="Enter password") }}
+          {% for error in form.password1.errors %}
+            <div class="error text-danger">{{ error }}</div>
+          {% endfor %}
+          <p>{{ form.password1.help_text }}</p>
+        </div>
+
+        <!-- Confirm Password Input -->
+        <div class="form-group">
+          <label for="password2">{{ form.password2.label }}</label>
+          {{ form.password2(class="form-control", id="password2", placeholder="Confirm password") }}
+          {% for error in form.password2.errors %}
+            <div class="error text-danger">{{ error }}</div>
+          {% endfor %}
+          <p>{{ form.password2.help_text }}</p>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn btn-primary btn-block">Sign Up</button>
+      </form>
+
+      <!-- Login Link -->
+      <div class="text-center mt-3">
+        <a href="{{ url_for('login') }}" class="text-muted">Already have an account? Log in here</a>
+      </div>
+
+    {% endif %}
+  </div>
+</div>
+
+{% endblock %}

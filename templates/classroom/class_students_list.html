@@ -1,0 +1,49 @@
+{% extends "classroom/base.html" %}
+{% block content %}
+
+<div class="student-list">
+  <div class="container">
+    {% if not class_students_list %}
+      <h1>No students in the class.</h1>
+    {% else %}
+
+    <form method="GET" action="{{ url_for('class_students_list') }}">
+      <p>Search Student: <input type="search" name="q" placeholder="Search"></p>
+    </form>
+
+    <div class="row">
+      {% for student in class_students_list %}
+      <div class="col-6 col-md-4">
+        <div class="student-box">
+          <div class="imgBx">
+            {% if student.student_profile_pic %}
+              <img src="{{ url_for('static', filename=student.student_profile_pic) }}" alt="">
+            {% else %}
+              {% if loop.index0 % 2 == 0 %}
+                <img src="{{ url_for('static', filename='images/login-avatar.PNG') }}" alt="">
+              {% else %}
+                <img src="{{ url_for('static', filename='images/login-avatar-2.PNG') }}" alt="">
+              {% endif %}
+            {% endif %}
+          </div>
+          <div class="content">
+            <h3>{{ student.name }}</h3>
+            <p><i class="far fa-user"></i> Username: {{ student.username }}</p>
+            <p><i class="fal fa-user-tag"></i> Roll No.: {{ student.roll_no }}</p>
+            <p><i class="far fa-phone"></i> Phone: {{ student.phone }}</p>
+            <p><i class="far fa-envelope-open-text"></i> Email ID: {{ student.email }}</p>
+            <a href="{{ url_for('student_marks_list', student_id=student.id) }}">
+
+
+              <p class="add-button">View Marks Profile</p>
+            </a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </div>
+</div>
+
+{% endblock %}

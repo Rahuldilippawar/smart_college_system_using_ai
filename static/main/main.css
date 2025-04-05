@@ -1,0 +1,633 @@
+/* General styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    background: #f9f9f9;
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* Full viewport height */
+}
+
+/* Header styling */
+header {
+    background: linear-gradient(90deg, #007bff, #00d4ff);
+    color: white;
+    text-align: center;
+    padding: 30px;
+    width: auto;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Design for Header */
+@media (max-width: 768px) {
+    header {
+        padding: 30px; /* Reduced padding for smaller screens */
+    }
+
+    header h1 {
+        font-size: 2.5rem; /* Smaller font size on mobile */
+    }
+}
+
+
+/* Header Title */
+header h1 {
+    margin: 0;
+    font-size: 3.5rem; /* Larger title for emphasis */
+    font-family: 'Poppins', sans-serif; /* Elegant modern font */
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 1;
+    animation: titleFadeIn 1s ease-out;
+}
+
+/* Highlight effect on the title */
+header h1 .highlight {
+    color: #ff008c;
+    background: linear-gradient(90deg, #ffeb3b, #ff9800); /* Vibrant yellow gradient */
+    -webkit-background-clip: text;
+    background-clip: text;
+    font-weight: bold;
+    animation: highlightEffect 1.5s ease-in-out infinite alternate;
+}
+
+/* Clock Animation */
+#time {
+    margin-top: 20px;
+    font-size: 1rem; /* Slightly larger font for visibility */
+    font-weight: 600; /* Bold for better readability */
+    letter-spacing: 1.5px;
+    color: #ffffff;
+    font-family: 'Roboto', sans-serif;
+    opacity: 0;
+    animation: fadeIn 2s ease-in forwards, clockEffect 5s ease-in-out infinite;
+}
+
+/* Fade In Animation */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Pulsing Glow Effect for Clock */
+@keyframes clockEffect {
+    0% {
+        text-shadow: 0 0 8px rgba(255, 255, 255, 0.6), 0 0 15px rgba(255, 255, 255, 0.4);
+    }
+    50% {
+        text-shadow: 0 0 18px rgba(255, 255, 255, 0.8), 0 0 35px rgba(255, 255, 255, 0.6);
+    }
+    100% {
+        text-shadow: 0 0 8px rgba(255, 255, 255, 0.6), 0 0 15px rgba(255, 255, 255, 0.4);
+    }
+}
+
+
+/* Keyframe animations */
+@keyframes titleFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes highlightEffect {
+    0% {
+        transform: scale(1);
+        color: #ffeb3b;
+    }
+    100% {
+        transform: scale(1.2);
+        color: #ff9800;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Main content styles */
+main {
+    padding: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+    flex: 1; /* Ensures that main content takes up available space */
+}
+
+/* Button container */
+.button-container {
+    display: flex;
+    justify-content: space-between; /* Align cards to left and right */
+    gap: 30px; /* Add space between cards */
+    margin: 40px 0;
+}
+
+/* Cards */
+.card {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    color: #333;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+    background: #fff;
+    width: 90%; /* Ensure it takes up the full available space */
+    max-width: 250px; /* Limit the max width of each card */
+    margin: 0 auto;
+    margin-bottom: 20px; /* Spacing between cards */
+}
+
+.card img {
+    width: 100%;
+    height: 150px; /* Adjusted image height */
+    object-fit: cover;
+    display: block;
+}
+
+.card-content {
+    background: white;
+    padding: 10px;
+}
+
+.card h2 {
+    font-size: 1.2rem;
+    margin: 0;
+    color: #007bff;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Notice board styles */
+.notice-board {
+    background: white;
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.notice-board h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: #007bff;
+}
+
+#notice-container {
+    font-size: 1.2rem;
+    background: #f1f1f1;
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 10px;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Footer styling */
+footer {
+    background: #007bff;
+    color: white;
+    text-align: center;
+    padding: 12px 0;
+    margin-top: 30px;
+    width: auto;
+    font-size: 1.0rem;
+}
+
+@media (max-width: 768px) {
+    /* Make the button container stack vertically */
+    .button-container {
+        flex-direction: column; /* Stack the cards in a single column on small screens */
+        align-items: center;
+        gap: 15px; /* Reduce space between items on mobile */
+    }}
+
+/* Admin Button Styling */
+.admin {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.admin-button {
+    display: inline-block;
+    background-color: #ff5722;
+    color: white;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.admin-button:hover {
+    background-color: #e64a19;
+}
+
+/* Add styles for the new buttons */
+.top-buttons {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    gap: 10px;
+}
+
+.top-button {
+    background-color: #f1f1f1;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.top-button img {
+    width: 24px;
+    height: 24px;
+}
+
+.top-button:hover {
+    background-color: #ddd;
+}
+
+/* Flower effect styles */
+.flower-effect {
+    animation: flowerAnimation 5s ease-out infinite;
+}
+
+@keyframes flowerAnimation {
+    0% {
+        opacity: 0;
+        transform: scale(0);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Right Side Top Navigation - List Style */
+.top-nav {
+    position: fixed;
+    top: 20px; /* Adjust based on the space you want from the top */
+    right: 10px;
+    z-index: 1000; /* Ensure it stays on top */
+}
+
+.nav-list {
+    list-style-type: none; /* Remove default list bullets */
+    margin: 0;
+    padding: 0;
+    display: flex; /* Display buttons horizontally */
+    flex-direction: row; /* Align the buttons in a row */
+}
+
+.nav-list li {
+    margin-right: 15px; /* Space between buttons */
+}
+
+.nav-button {
+    display: block;
+    background-color: #ffeb3b;
+    padding: 10px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 18px;
+    color: black;
+    text-align: center;
+}
+
+.nav-button:hover {
+    background-color: #ff9800;
+}
+
+/* Music Button - Left Vertical Position */
+.music-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1000; /* Ensure it stays on top */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Music Button Image */
+.music-button img {
+    width: 60px; /* Slightly bigger icon for better visibility */
+    height: 60px;
+    border-radius: 50%; /* Circular icon */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Soft shadow around icon */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Music Button Hover Effects */
+.music-button:hover img {
+    transform: scale(1.1); /* Slightly enlarge the icon on hover */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3); /* Increase shadow on hover */
+}
+
+/* Music Button Label Text */
+.music-button span {
+    display: block;
+    font-size: 16px; /* Larger font size for better readability */
+    margin-top: 10px;
+    color: #fff;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+/* Music Button Hover Text Color */
+.music-button:hover span {
+    color: #ffeb3b; /* Change text color on hover */
+}
+
+/* Glow Effect for Music Button */
+@keyframes glowEffect {
+    0% {
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.6), 0 0 30px rgba(255, 255, 255, 0.3);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 40px rgba(255, 255, 255, 0.5);
+    }
+    100% {
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.6), 0 0 30px rgba(255, 255, 255, 0.3);
+    }
+}
+
+/* Apply glow effect when music is playing */
+.music-button.playing img {
+    animation: glowEffect 1.5s infinite alternate;
+}
+
+
+/* Flower Animation */
+.flowers {
+    position: absolute;
+    top: 20%;
+    left: 5%;
+    transform: translateX(-50%);
+    z-index: 10;
+}
+
+.flowers img {
+    width: 50px;
+    height: 50px;
+    margin: 5px;
+    opacity: 0;
+    animation: fadeInOut 5s ease-in-out infinite;
+}
+
+@keyframes fadeInOut {
+    0% { opacity: 0; transform: translateY(-20px) rotate(0deg); }
+    50% { opacity: 1; transform: translateY(0) rotate(180deg); }
+    100% { opacity: 0; transform: translateY(20px) rotate(360deg); }
+}
+
+/* Flower Delay for Staggered Animation */
+.flowers img:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.flowers img:nth-child(2) {
+    animation-delay: 1s;
+}
+
+.flowers img:nth-child(3) {
+    animation-delay: 2s;
+}
+
+/* Right Side Top Navigation */
+.top-nav {
+    position: fixed;
+    top: 110px; /* Adjust based on the space you want from the top */
+    right: 10px;
+    z-index: 1000; /* Ensure it stays on top */
+}
+
+.nav-list {
+    list-style-type: none; /* Remove default list bullets */
+    margin: 0;
+    padding: 0;
+    display: flex; /* Display buttons horizontally */
+    flex-direction: row; /* Align the buttons in a row */
+}
+
+.nav-list li {
+    margin-right: 15px; /* Space between buttons */
+}
+
+.nav-button {
+    display: block;
+    background-color: #ffeb3b;
+    padding: 10px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 18px;
+    color: black;
+    text-align: center;
+}
+
+.nav-button:hover {
+    background-color: #ff9800;
+}
+
+/* Professional Notice Board Styling */
+.notice-board {
+    max-width: 1200px;
+    margin: 4rem auto;
+    padding: 3.5rem;
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1); /* Deeper shadow for more depth */
+    text-align: center;
+    background-color: #fafafa;
+}
+
+/* Live Notices Heading Styling */
+/* Live Notices Heading Styling */
+.notice-board h2 {
+    font-size: 2.4rem; /* Increased font size for prominence */
+    margin-bottom: 2.5rem;
+    font-weight: 700;
+    color: #007bff; /* Blue color for the heading */
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-family: 'Roboto', sans-serif;
+    transition: color 0.3s ease, transform 0.3s ease; /* Smooth color and transformation effect */
+}
+
+/* Hover Effect */
+.notice-board h2:hover {
+    color: #0056b3; /* Darker blue shade on hover for a dynamic effect */
+    text-decoration: underline; /* Underline the heading on hover */
+    transform: scale(1.05); /* Slightly increase size on hover for emphasis */
+}
+
+/* Optional: Animation for page load */
+.notice-board h2 {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+/* Keyframes for animation */
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+.notice-card {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 cards per row */
+    gap: 2.5rem;
+    padding: 2rem;
+    transition: all 0.3s ease;
+}
+
+.notice-card p {
+    font-size: 1.1rem;
+    color: #777;
+    font-style: italic;
+    margin-top: 1.5rem;
+}
+
+.notice-card .notice-item {
+    background: #ffffff;
+    padding: 2.2rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1); /* Softer, yet deeper shadow */
+    transition: all 0.3s ease;
+    cursor: pointer;
+    text-align: left;
+    font-family: 'Arial', sans-serif;
+}
+
+.notice-card .notice-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15); /* Hover effect with softer shadow */
+}
+
+.notice-card .notice-item h3 {
+    font-size: 1.7rem;
+    color: #333;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.notice-card .notice-item p {
+    font-size: 1.1rem;
+    color: #555;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+}
+
+.notice-card .notice-item .delete-notice {
+    background-color: #ff4d4f;
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: inline-block;
+    font-weight: 500;
+}
+
+.notice-card .notice-item .delete-notice:hover {
+    background-color: #ff2a2b;
+    transform: scale(1.05); /* Subtle scaling for button */
+}
+
+@media (max-width: 1024px) {
+    .notice-card {
+        grid-template-columns: repeat(2, 1fr); /* Two cards per row for tablets */
+    }
+}
+
+@media (max-width: 768px) {
+    .notice-card {
+        grid-template-columns: 1fr; /* Single card per row on mobile */
+    }
+}
+.image-slider-section {
+    margin-top: 50px;
+    text-align: center;
+}
+
+.slider-container {
+    width: 100%; /* Adjust the container width to make the images smaller */
+    overflow: hidden;
+    margin: 0 auto;
+    border-radius: 60px; /* Rounded corners for the container */
+}
+
+.slider {
+    display: flex;
+    transition: transform 0s ease-in-out;
+}
+
+.slider-image {
+    width: 150px; /* Set a smaller width for images */
+    height: 150px; /* Set a fixed height */
+    object-fit: cover; /* Maintain aspect ratio */
+    margin: 0 5px; /* Optional: Add space between images */
+    border-radius: 50%; /* Rounded corners for the images */
+}
+
+/* Optional: Add an infinite loop effect with CSS */
+.slider {
+    animation: slide 15s infinite linear; /* Continuous sliding effect */
+}
+
+@keyframes slide {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%); /* Move all images left */
+    }
+}
+@keyframes slide {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%); /* Move all images left */
+    }
+}
+
+/* Optional: Add an infinite loop effect with CSS */
+.slider {
+    animation: slide 16s infinite linear; /* Change duration to 16 seconds */
+}

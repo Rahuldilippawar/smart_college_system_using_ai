@@ -1,0 +1,34 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.banner {
+    background-color: #f8f9fa;
+    padding: 20px;
+}
+
+.banner img {
+    max-width: 100%;
+    height: auto;
+}
+
+.about, .use-content {
+    padding: 40px 20px;
+}
+
+.box {
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin: 20px;
+    text-align: center;
+}
+
+.imgBx img {
+    max-width: 100%;
+    height: auto;
+}
+
+footer {
+    background-color: #f8f9fa;
+    padding: 15px;
+}

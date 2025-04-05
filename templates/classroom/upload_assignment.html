@@ -1,0 +1,40 @@
+{% extends 'classroom/base.html' %}
+{% block content %}
+<div class="container mt-5">
+  <div class="card shadow-lg p-4 border-0 rounded-4">
+    {% if assignment_uploaded %}
+      <div class="alert alert-success text-center" role="alert">
+        <h2 class="fw-bold">✅ Assignment Uploaded Successfully!</h2>
+        <p class="lead">You can now check your submissions in the assignment section.</p>
+      </div>
+    {% else %}
+      <h2 class="text-center fw-bold mb-4">📂 Upload Your Assignment</h2>
+      <form enctype="multipart/form-data" method="post" class="needs-validation" novalidate>
+        {{ form.hidden_tag() }}
+
+        <div class="mb-3">
+          <label class="form-label fw-semibold">{{ form.assignment_name.label }}</label>
+          {{ form.assignment_name(class="form-control shadow-sm", placeholder="Enter assignment title") }}
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label fw-semibold">{{ form.assignment_file.label }}</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-upload"></i></span>
+            {{ form.assignment_file(class="form-control shadow-sm") }}
+          </div>
+        </div>
+
+        <div class="text-center">
+          <button type="submit" class="btn btn-danger btn-lg px-4 fw-semibold shadow-sm">
+            <i class="bi bi-cloud-upload"></i> Upload Assignment
+          </button>
+        </div>
+      </form>
+    {% endif %}
+  </div>
+</div>
+
+<!-- Bootstrap Icons (Optional) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'classroom/base.html' %}
+
+{% block content %}
+<div class="container">
+  <div class="jumbotron">
+    {% if marks_given %}
+      <h1>Marks added successfully.</h1>
+    {% else %}
+      <h1>Give Marks to {{ student.name }}</h1>
+      <form method="post">
+        {{ form.hidden_tag() }}  {# CSRF Token for Flask-WTF #}
+
+        <div class="form-group">
+          {{ form.subject_name.label(class="form-label") }}
+          {{ form.subject_name(class="form-control") }}
+        </div>
+
+        <div class="form-group">
+          {{ form.marks_obtained.label(class="form-label") }}
+          {{ form.marks_obtained(class="form-control") }}
+        </div>
+
+        <div class="form-group">
+          {{ form.maximum_marks.label(class="form-label") }}
+          {{ form.maximum_marks(class="form-control") }}
+        </div>
+
+        <input type="submit" class="btn btn-danger" value="Add Marks">
+      </form>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

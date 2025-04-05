@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Manage Notices</title>
+    <link rel="stylesheet" href="/static/admin/notice.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="/static/images/atma.jpg" type="image/x-icon">
+   
+</head>
+<body>
+    <header>
+        <h1>Admin Panel - Manage Notices</h1>
+    </header>
+
+        <!-- Pop-up container -->
+    <div id="popup" class="popup">
+        <p id="popup-message"></p>
+        <button id="popup-close">Close</button>
+    </div>
+
+    <main>
+        <form id="notice-form">
+            <h2>Add/Update Notice</h2>
+            <textarea id="notice-text" rows="4" placeholder="Enter the notice here..." required></textarea>
+            <button type="submit">Save Notice</button>
+        </form>
+
+        <section>
+            <h2>Current Notices</h2>
+            <ul id="notice-list">
+                <!-- List of notices will be dynamically populated here -->
+            </ul>
+        </section>
+    </main>
+
+    
+
+    <script src="/static/admin/notice.js"></script>
+</body>
+</html>

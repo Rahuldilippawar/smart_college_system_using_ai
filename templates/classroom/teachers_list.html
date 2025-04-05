@@ -1,0 +1,51 @@
+{% extends "classroom/base.html" %}
+{% block content %}
+
+<div class="container mt-4">
+  
+  <!-- 🔍 Search Form -->
+  <form method="GET" action="{{ url_for('teachers_list') }}" class="mb-4">
+    <div class="input-group">
+      <input type="search" name="q" class="form-control" placeholder="Search Teacher..." value="{{ request.args.get('q', '') }}">
+      <div class="input-group-append">
+        <button class="btn btn-primary" type="submit">🔍 Search</button>
+      </div>
+    </div>
+  </form>
+
+  <!-- 📚 Teachers List -->
+  <div class="row">
+    {% for teacher in teachers_list %}
+    <div class="col-12 col-sm-6 col-md-4 mb-4">
+      <div class="card shadow-lg border-0 rounded">
+        
+        <!-- 📸 Profile Picture -->
+        <div class="card-img-top text-center mt-3">
+          {% if teacher.profile_pic %}
+            <img src="{{ url_for('static', filename='images/' + teacher.profile_pic) }}" class="rounded-circle" width="120" height="120">
+          {% else %}
+            <img src="{{ url_for('static', filename='images/login-avatar.PNG' if loop.index0 % 2 == 0 else 'images/login-avatar-2.PNG') }}" 
+                 class="rounded-circle" width="120" height="120">
+          {% endif %}
+        </div>
+
+        <div class="card-body text-center">
+          <h4 class="text-primary">{{ teacher.name }}</h4>
+          <p><i class="fas fa-book"></i> <b>Subject:</b> {{ teacher.subject_name }}</p>
+          <p><i class="fas fa-user"></i> <b>Username:</b> {{ teacher.username }}</p>
+          <p><i class="fas fa-phone"></i> <b>Phone:</b> {{ teacher.phone }}</p>
+          <p><i class="fas fa-envelope"></i> <b>Email:</b> {{ teacher.email }}</p>
+
+          <a href="{{ url_for('write_message', teacher_id=teacher.id) }}" class="btn btn-success">
+            ✉️ Send Message
+          </a>
+        </div>
+
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+</div>
+
+{% endblock %}

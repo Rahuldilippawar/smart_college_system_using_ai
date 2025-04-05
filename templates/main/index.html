@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amrit Helper</title>
+    <link rel="stylesheet" href="/static/main/main.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="/static/images/atma.jpg" type="image/x-icon">
+   
+</head>
+<body>
+    <header>
+        <h1>Welcome to <span class="highlight">Amrit AI</span></h1>
+        
+        <div id="time"></div>
+    </header>
+    
+    <main>
+        <section class="buttons">
+            <div class="button-container">
+                <!-- Hostel Card -->
+                <a href="/hostelmain" class="card" target="_blank">
+                    <img src="/static/images/hostel1.jpg" alt="Hostel">
+                    <div class="card-content">
+                        <h2>Hostel</h2>
+                    </div>
+                </a>
+                
+                <!-- College Card -->
+                <a href="/collegemain" class="card">
+                    <img src="/static/images/clg.jpg" alt="College">
+                    <div class="card-content">
+                        <h2>College</h2>
+                    </div>
+                </a>
+                
+                <!-- Voice Assistant Card -->
+                <a href="/voice" class="card">
+                    <img src="/static/images/Voice.jpeg" alt="Hostel">
+                    <div class="card-content">
+                        <h2>Voice Assistant</h2>
+                    </div>
+                </a>
+
+                <!-- Chatbot Card -->
+                <a href="/Chatboat" class="card">
+                    <img src="/static/images/chatboat.jpeg" alt="Hostel">
+                    <div class="card-content">
+                        <h2>Chatbot</h2>
+                    </div>
+                </a>
+                
+                <!-- Music Button -->
+                <button id="musicButton" class="music-button">
+                    <img src="/static/images/atma.jpg" alt="Devotional Music">
+                    <span>ATMA DHUN</span>
+                </button>
+            </div>
+        </section>
+
+        
+
+       
+        <!-- Horizontal Rule and Image Slider -->
+        <section class="image-slider-section">
+            <hr>
+            <h2>Image Gallery</h2>
+            <div class="slider-container">
+                <div class="slider">
+                    <img src="/static/images/friend.png" alt="Image 1" class="slider-image">
+                    <img src="/static/images/babaji.jpg" alt="Image 2" class="slider-image">
+                    <img src="/static/images/ketan.jpg" alt="Image 3" class="slider-image">
+                    <img src="/static/images/nikhil.jpg" alt="Image 4" class="slider-image">
+                    <img src="/static/images/friend.png" alt="Image 1" class="slider-image">
+                    <img src="/static/images/soham.jpg" alt="Image 2" class="slider-image">
+                    <img src="/static/images/pavan.jpg" alt="Image 3" class="slider-image">
+                    <img src="/static/images/parth.jpg" alt="Image 4" class="slider-image">
+                </div>
+                </div>
+            </div>
+        </section>
+       
+    </main>
+    
+    <footer>
+        <p>&copy; 2025 Amrit Helper. All rights reserved.</p>
+
+    </footer>
+
+    <!-- Music Sound -->
+    <audio id="musicAudio" loop>
+        <source src="/static/music/atma.mp3" type="audio/mp3">
+    </audio>
+
+    <!-- Right Side Top Buttons as List -->
+    <div class="top-nav">
+        <ul class="nav-list">
+            <li><a href="/admin" id="adminButton" class="nav-button">Admin</a></li>
+            <li><a href="/help" id="helpButton" class="nav-button">Help</a></li>
+            <li><a href="/contact" id="contactButton" class="nav-button">Contact</a></li>
+        </ul>
+    </div>
+
+    <script src="/static/main/script.js"></script>
+    <script>
+        // Music Button Functionality
+        let musicButton = document.getElementById("musicButton");
+        let musicAudio = document.getElementById("musicAudio");
+        let musicPlaying = false;
+
+        musicButton.addEventListener("click", function() {
+            if (musicPlaying) {
+                musicAudio.pause();
+                musicButton.querySelector("span").innerText = "Play Dhun";
+            } else {
+                musicAudio.play();
+                musicButton.querySelector("span").innerText = "Stop Dhun";
+                showDevotionalEffect();
+            }
+            musicPlaying = !musicPlaying;
+        });
+
+        // Function to show multiple flowers and devotional effect
+        function showDevotionalEffect() {
+            let flowers = document.createElement("div");
+            flowers.classList.add("flowers");
+            flowers.innerHTML = "<img src='/static/images/fl1.png' alt='Flower'><img src='/static/images/fl2.png' alt='Flower'><img src='/static/images/fl1.png' alt='Flower'>";
+            document.body.appendChild(flowers);
+            
+            setTimeout(() => {
+                flowers.style.animation = "devotionalEffect 5s infinite";
+            }, 100);
+
+            setTimeout(() => {
+                flowers.remove();
+            }, 15000); // Remove after 15 seconds
+        }
+        // Image slider functionality
+        let currentIndex = 0;
+        let images = document.querySelectorAll(".slider-image");
+        let slider = document.querySelector(".slider");
+
+        setInterval(() => {
+            currentIndex = (currentIndex + 1) % images.length;
+            slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+        }, 3000); // Slide every 3 seconds
+    </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+{% extends 'classroom/base.html' %}
+{% block content %}
+
+<div class="login-page">
+  <img src="{{ url_for('static', filename='images/login-background.PNG') }}" alt="">
+  <div class="login-form">
+    <div class="avatar">
+      <img src="{{ url_for('static', filename='images/login-avatar.PNG') }}" alt="">
+    </div>
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <div class="alert alert-primary alert-dismissible fade show" role="alert">
+          {% for message in messages %}
+            <div class="alert">{{ message }}</div>
+          {% endfor %}
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      {% endif %}
+    {% endwith %}
+    <h1>Login</h1>
+    <form action="{{ url_for('login') }}" method="POST">
+      {{ form.hidden_tag() }}
+      <p>Username:</p>
+      <input type="text" name="username" placeholder="Enter your username" required>
+      <br>
+      <br>
+      <p>Password:</p>
+      <input type="password" name="password" placeholder="Enter password" required>
+      <br>
+      <br>
+      <input class="btn btn-primary" type="submit" value="Login">
+    </form>
+    <a href="{{ url_for('signup') }}">Don't have an account.</a>
+  </div>
+</div>
+
+{% endblock %}

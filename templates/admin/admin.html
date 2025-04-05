@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Amrit Helper</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="/static/images/atma.jpg" type="image/x-icon">
+   
+    <link rel="stylesheet" href="/static/admin/admin.css">
+</head>
+<body>
+    <div class="admin-wrapper">
+        <!-- Sidebar -->
+        <aside class="admin-sidebar">
+            <h2>Admin Panel</h2>
+            <nav class="admin-nav">
+                <ul>
+                    <li><a href="#" id="dashboardButton">Dashboard</a></li>
+                    <li><a href="/notice" id="manageNoticesButton">Manage Notices</a></li>
+                    <li><a href="/voiceadmin" id="manageUsersButton">Manage Users</a></li>
+                    <li><a href="/admin/settings" id="settingsButton">Settings</a></li>
+                    <li><a href="/logout" id="logoutButton">Logout</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="admin-main">
+            <section id="dashboardSection">
+                <h2>Welcome, Admin!</h2>
+                <div class="stats">
+                    <div class="stat-card">
+                        <h3>Total Users</h3>
+                        <p id="userCount" class="stat-value">Loading...</p>
+                    </div>
+                  
+                    <div class="stat-card">
+                        <h3>System Status</h3>
+                        <p id="systemStatus" class="stat-value">Online</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Manage Users Section (Hidden by default) -->
+            <section id="manageUsersSection" style="display: none;">
+                <h2>Manage Users</h2>
+                <!-- User management content goes here -->
+            </section>
+            
+            <!-- Settings Section (Hidden by default) -->
+            <section id="settingsSection" style="display: none;">
+                <h2>Settings</h2>
+                <!-- Settings content goes here -->
+            </section>
+        </main>
+    </div>
+
+    <!-- External JavaScript file -->
+    <script src="/static/admin/admin.js"></script>
+</body>
+</html>

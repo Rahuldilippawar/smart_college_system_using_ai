@@ -1,0 +1,108 @@
+/* Global Styles */
+body {
+    font-family: 'Poppins', sans-serif; /* Modern and bold font */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    height: 100vh;
+    background-color: #f4f7f6; /* Soft background color */
+}
+
+.admin-wrapper {
+    display: flex;
+    width: 100%;
+}
+
+.admin-sidebar {
+    background-color: #3b3b3b; /* Darker shade for the sidebar */
+    color: white;
+    padding: 25px;
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    box-shadow: 4px 0 15px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+}
+
+.admin-sidebar h2 {
+    margin-bottom: 30px;
+    font-size: 30px;
+    font-weight: 600;
+    color: #ff7043; /* Bright accent color */
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.admin-nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+.admin-nav li {
+    margin-bottom: 25px;
+}
+
+.admin-nav a {
+    color: #b8b8b8; /* Subtle gray color for the links */
+    text-decoration: none;
+    font-size: 18px;
+    display: block;
+    padding: 12px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.admin-nav a:hover {
+    background-color: #ff7043; /* Vibrant hover color */
+    color: white;
+    transform: scale(1.05); /* Slight zoom effect */
+}
+
+.admin-nav a.active {
+    background-color: #f44336; /* Red accent for active link */
+    color: white;
+}
+
+.admin-main {
+    flex: 1;
+    padding: 40px;
+    overflow-y: auto;
+    background-color: #ffffff;
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.05); /* Soft inner shadow */
+    border-radius: 10px;
+    margin: 20px;
+}
+
+.stats {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+.stat-card {
+    background-color: #ffffff;
+    border-radius: 12px; /* Rounded corners for modern look */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15); /* Deep shadow for 3D effect */
+    padding: 30px;
+    flex: 1;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-6px); /* Slight lift effect */
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2); /* More intense shadow */
+    background-color: #ffccbc; /* Light orange background on hover */
+}
+
+.stat-value {
+    font-size: 34px;
+    color: #333;
+    font-weight: 700;
+    margin-top: 15px;
+}
+
+.stat-description {
+    font-size: 16px;
+    color: #777;
+    margin-top: 10px;
+}

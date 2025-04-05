@@ -1,0 +1,150 @@
+{% extends 'classroom/base.html' %}
+
+{% block content %}
+
+<!-- Display Flash Messages -->
+{% with messages = get_flashed_messages(with_categories=True) %}
+    {% if messages %}
+        <div class="container mt-4">
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }} alert-dismissible fade show shadow-lg" role="alert">
+                    {{ message|safe }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endwith %}
+
+<!-- Banner Section -->
+<div class="banner text-center">
+    <img src="{{ url_for('static', filename='images/first.PNG') }}" alt="Classroom Banner">
+    <div class="banner-overlay">
+        <h1 class="display-4 text-white">Welcome to Class Manager</h1>
+        <p class="lead text-light">Your all-in-one student-teacher portal</p>
+        <a href="{{ url_for('signup') }}" class="btn btn-warning btn-lg shadow-lg">Get Started</a>
+    </div>
+</div>
+
+<!-- About Us Section -->
+<div class="container text-center mt-5">
+    <h1 class="text-primary fw-bold">About Us</h1>
+    <p class="text-muted">
+        Class Manager is a feature-rich student-teacher portal that enables seamless classroom management. 
+        From assignments to class notices, we bring everything to one platform for an enhanced learning experience.
+    </p>
+</div>
+
+<!-- Services Section -->
+<div class="container my-5">
+    <h1 class="text-center text-success fw-bold">Our Services</h1>
+    <div class="row">
+        <!-- Teacher Section -->
+        <div class="col-md-6">
+            <div class="card shadow-lg service-box">
+                <img src="{{ url_for('static', filename='images/teacher.PNG') }}" class="card-img-top" alt="Teacher Services">
+                <div class="card-body">
+                    <h3 class="card-title text-center text-primary">For Teachers</h3>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">📚 Manage students & grades.</li>
+                        <li class="list-group-item">📢 Post class notices.</li>
+                        <li class="list-group-item">📥 Upload assignments & track submissions.</li>
+                        <li class="list-group-item">📨 Respond to student messages.</li>
+                        <li class="list-group-item">📝 Update & manage student records.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Student Section -->
+        <div class="col-md-6">
+            <div class="card shadow-lg service-box">
+                <img src="{{ url_for('static', filename='images/homeimg.PNG') }}" class="card-img-top" alt="Student Services">
+                <div class="card-body">
+                    <h3 class="card-title text-center text-primary">For Students</h3>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">📢 Stay updated with class notices.</li>
+                        <li class="list-group-item">📥 Download & submit assignments.</li>
+                        <li class="list-group-item">💬 Message teachers for queries.</li>
+                        <li class="list-group-item">📊 Check grades & performance reports.</li>
+                        <li class="list-group-item">👤 Manage profile & upload pictures.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Digital Learning Section -->
+<div class="container my-5">
+    <div class="row align-items-center">
+        <div class="col-md-6">
+            <img src="{{ url_for('static', filename='images/mastery-based-education.PNG') }}" class="img-fluid rounded shadow-lg" alt="Digital Learning">
+        </div>
+        <div class="col-md-6">
+            <h2 class="text-center text-primary fw-bold">Embrace Digital Learning</h2>
+            <p class="text-muted">
+                Our research with over 16,000 educators helps us enhance digital learning experiences. 
+                Class Manager integrates essential tools to bridge the gap between students and teachers for seamless learning.
+            </p>
+        </div>
+    </div>
+</div>
+
+<!-- Social Media Section -->
+<div class="container text-center my-5">
+    <h2 class="text-primary">Stay Connected With Us</h2>
+    <p class="text-muted">Follow us on social media for updates and news</p>
+    <div class="social-icons">
+        <a href="#" class="btn btn-primary btn-lg mx-2"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="btn btn-info btn-lg mx-2"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="btn btn-danger btn-lg mx-2"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="btn btn-dark btn-lg mx-2"><i class="fab fa-linkedin-in"></i></a>
+    </div>
+</div>
+
+<style>
+/* Banner Section */
+.banner {
+    position: relative;
+    text-align: center;
+    color: white;
+    margin-bottom: 30px;
+}
+.banner img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+.banner-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 40px;
+    border-radius: 10px;
+}
+
+/* Service Box */
+.service-box {
+    transition: transform 0.3s ease-in-out;
+}
+.service-box:hover {
+    transform: scale(1.05);
+}
+
+/* Social Icons */
+.social-icons a {
+    width: 60px;
+    height: 60px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: white;
+}
+</style>
+
+{% endblock %}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Voice Assistant</title>
+    <link rel="icon" href="/static/images/atma.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="/static/voice/voice.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.6.2/fuse.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        .recording { background-color: red; }
+        .microphone-btn { cursor: pointer; padding: 10px; }
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        <h1>Smart Voice Assistant</h1>
+        <p id="greeting">Hello, User! How can I help you today?</p> <!-- Personalized greeting -->
+        <p>Click the button below and start speaking.</p>
+        <div class="assistant">
+            <button class="microphone-btn" id="microphoneBtn" aria-label="Start voice recognition">
+                <i class="fas fa-microphone"></i>
+            </button>
+            <p id="statusText">Click the microphone to speak.</p>
+        </div>
+        <div class="response-area" id="responseArea">
+            <p id="responseText"></p>
+        <div id="suggestionBox"></div>
+
+        </div>
+        <div class="language-selector">
+            <label for="languageSelect">Choose Language:</label>
+            <select id="languageSelect">
+                <option value="en-US">English</option>
+                <option value="mr-IN">Marathi</option>
+                <option value="hi-IN">Hindi</option>
+            </select>
+        </div>
+    </div>
+    <script src="/static/voice/voice.js"></script>
+</body>
+</html>

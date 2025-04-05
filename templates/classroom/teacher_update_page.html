@@ -1,0 +1,44 @@
+{% extends "classroom/base.html" %}
+{% block content %}
+
+<div class="container">
+  <div class="jumbotron">
+    {% if profile_updated %}
+      <h1>Your profile has been successfully updated.</h1>
+    {% else %}
+      <h1>Update Profile</h1>
+      <form method="POST" enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+        
+        <div class="form-group">
+          {{ form.name.label(class="form-label") }}
+          {{ form.name(class="form-control") }}
+        </div>
+
+        <div class="form-group">
+          {{ form.subject_name.label(class="form-label") }}
+          {{ form.subject_name(class="form-control") }}
+        </div>
+
+        <div class="form-group">
+          {{ form.phone.label(class="form-label") }}
+          {{ form.phone(class="form-control") }}
+        </div>
+
+        <div class="form-group">
+          {{ form.email.label(class="form-label") }}
+          {{ form.email(class="form-control") }}
+        </div>
+
+        <div class="form-group">
+          {{ form.teacher_profile_pic.label(class="form-label") }}
+          {{ form.teacher_profile_pic(class="form-control-file") }}
+        </div>
+
+        <input class="btn btn-primary" type="submit" value="Submit">
+      </form>
+    {% endif %}
+  </div>
+</div>
+
+{% endblock %}

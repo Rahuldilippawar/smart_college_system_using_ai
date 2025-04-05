@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title>Student Manager</title>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
+    <!-- jQuery & JS Libraries -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Source+Sans+Pro&display=swap" rel="stylesheet">
+
+    <!-- Static Files -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/searchbar.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/newbase.css') }}">
+</head>
+<body>
+
+    <nav>
+        <div class="toggle">
+            <a href="{{ url_for('home') }}">Class Manager</a>
+            <i class="fa fa-bars menu"></i>
+        </div>
+    </nav>
+
+    <div class="sidebar">
+        <ul>
+            {% if user_authenticated %}
+                {% if user_is_teacher %}
+                    <li> <a href="{{ url_for('upload_assignment') }}">Upload Assignment</a> </li>
+                    <li> <a href="{{ url_for('assignment_list') }}">Assignments</a>                </li>
+                    <li> <a href="{{ url_for('submit_list', teacher_id=1) }}">View Submissions</a> </li>
+
+                    <li> <a href="{{ url_for('students_list') }}">All Students List</a> </li>
+                    <li> <a href="{{ url_for('class_students_list') }}">Class Students List</a> </li>
+                    <li> <a href="{{ url_for('write_notice') }}">Write Notice</a> </li>
+                    <li> <a href="{{ url_for('messages_list', teacher_id=user_id) }}">Inbox</a></li>
+                    <li> <a href="{{ url_for('teacher_detail', pk=user_id) }}">Profile</a> </li>
+                {% else %}
+                    <li> <a href="{{ url_for('all_marks_list', pk=user_id) }}">Marks</a> </li>
+
+                    <li><a href="{{ url_for('class_notice', student_id=user_id) }}">Class Notice</a></li>
+
+                    <li> <a href="{{ url_for('class_assignment', student_id=user_id) }}">Class Assignment</a></li>
+
+                    <li> <a href="{{ url_for('teachers_list') }}">Teacher list</a> </li>
+                    <li><a href="{{ url_for('student_detail', pk=student.id) }}">Edit Profile</a>                   </li>
+
+
+
+                {% endif %}
+                <li> <a href="{{ url_for('change_password') }}">Change Password</a> </li>
+                <li> <a href="{{ url_for('logout') }}">Logout</a> </li>
+            {% else %}
+                <li><a class="head-left" href="{{ url_for('login') }}">Login</a></li>
+                <li><a class="head-left" href="{{ url_for('signup') }}">Sign Up</a></li>
+            {% endif %}
+        </ul>
+    </div>
+
+    {% block content %}
+    {% endblock %}
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('.menu').click(function(){
+                $('ul').toggleClass('active');
+            });
+        });
+    </script>
+
+    
+</body>
+</html>
