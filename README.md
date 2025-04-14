@@ -1,0 +1,1 @@
+Smart College System using AI is an intelligent platform that enhances communication between students and teachers. It includes AI chatbot, voice interaction, classroom management, dynamic website features, and smart automation to improve academic workflows and user experience.
